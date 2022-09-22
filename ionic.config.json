@@ -1,0 +1,7 @@
+{
+  "name": "grow",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

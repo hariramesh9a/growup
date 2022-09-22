@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <img src="assets/icon/logo.png" class="logo">
+          <span class="subtitle"> GrowOps</span>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+
+  <div class="ct">
+
+      <div class="ml-20">
+
+          <ion-item class="page-subtitle" lines="none">Adjust environment</ion-item>
+
+
+
+          <ion-button expand="block" color="success" (click)="login(1)">
+              <ion-icon slot="icon-only" name="camera"></ion-icon>
+              Take a Photo
+          </ion-button>
+
+          <ion-item expand="block" color="success">
+              <ion-label floating> Upload Image</ion-label>
+              <ion-input type="file" [id]="pic"></ion-input>
+            </ion-item>
+          <ion-item expand="block">
+              <ion-label> Temperature</ion-label>
+              <ion-range expand="block" color="" (ionChange)="onIonChange($event)" [snaps]="true" [min]="0" [max]="100">
+                 
+                  <ion-icon slot="start" color="secondary" name="snow-outline"></ion-icon>
+                  <ion-icon slot="end" color="danger" name="sunny-outline"></ion-icon>
+              </ion-range>
+              <ion-label expand="block">{{ lastEmittedValue }}</ion-label>
+          </ion-item>
+             
+          <ion-button expand="block" color="success" (click)="login(1)">
+              
+             Submit
+          </ion-button>
+
+          <!-- <ion-button expand="block"  color="secondary" (click) ="login(3)">
+              <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+              User 3
+          </ion-button> -->
+
+
+
+          <!-- <ion-item class="page-subtitle" lines="none"><span>Machine learning model serving changes based on user profile</span></ion-item> -->
+      </div>
+
+
+  </div>
+
+  <div *ngIf="areStoresAvailable">
+
+
+      <ion-card *ngFor="let items of stores">
+          <ion-item>
+              <ion-thumbnail slot="start">
+                  <ion-img width="20px" height="20px" [src]="items.imageUrl"></ion-img>
+              </ion-thumbnail>
+              <ion-label color="secondary">
+                  <ion-icon color="secondary" class="m-4" name="time" slot="start"></ion-icon>
+                  <span class="page-subtitle">{{items.wait}} wait </span>
+              </ion-label>
+              <ion-button color="secondary" (click)="navigateToOtherPage()">Join Queue</ion-button>
+
+
+          </ion-item>
+
+          <ion-card-content>
+              <ion-item>
+                  <ion-icon class="m-4" name="flag" slot="start"></ion-icon>
+                  <ion-label class="page-subtitle m-4">{{items.name}}</ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-icon class="m-4" name="pin" slot="start"></ion-icon>
+                  <ion-label class="m-4"><span class="page-subtitle">{{items.address}}</span></ion-label>
+              </ion-item>
+
+          </ion-card-content>
+      </ion-card>
+
+
+  </div>
+
+</ion-content>
